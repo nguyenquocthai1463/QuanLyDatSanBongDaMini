@@ -1,0 +1,13 @@
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe.config
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DangNhap.resources
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DatSan.resources
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.Properties.Resources.resources
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.TrangChu.resources
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.GenerateResource.cache
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ThanhToan.resources

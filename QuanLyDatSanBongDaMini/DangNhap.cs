@@ -51,5 +51,10 @@ namespace QuanLyDatSanBongDaMini
                 textBox2.PasswordChar = '*';
             }
         }
+
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
