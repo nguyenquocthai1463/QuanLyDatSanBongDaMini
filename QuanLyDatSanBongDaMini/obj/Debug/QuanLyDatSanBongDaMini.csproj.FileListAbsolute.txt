@@ -11,3 +11,16 @@ C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\Q
 C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
 C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ThanhToan.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe.config
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DangNhap.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DatSan.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.Properties.Resources.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ThanhToan.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.TrangChu.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.GenerateResource.cache
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
