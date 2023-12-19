@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyDatSanBongDaMini
 {
@@ -18,18 +19,31 @@ namespace QuanLyDatSanBongDaMini
         string str = @"Data Source=TRIS72;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
         SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable table = new DataTable();
+        DataTable table1 = new DataTable();
         void loaddata()
         {
+
             command = connection.CreateCommand();
             command.CommandText = "select * from HoaDon";
             adapter.SelectCommand = command;
             table.Clear();
             adapter.Fill(table);
             dataGridView1.DataSource = table;
+
+        }
+        void loaddata2()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "select * from DichVu";
+            adapter.SelectCommand = command;
+            table1.Clear();
+            adapter.Fill(table1);
+            dataGridView2.DataSource = table1;
         }
         public ThanhToan()
         {
             InitializeComponent();
+         
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,10 +64,10 @@ namespace QuanLyDatSanBongDaMini
 
         private void ThanhToan_Load(object sender, EventArgs e)
         {
-
             connection = new SqlConnection(str);
             connection.Open();
             loaddata();
+            loaddata2();
             bingding();
         }
 
@@ -77,6 +91,125 @@ namespace QuanLyDatSanBongDaMini
 
             textBox5.DataBindings.Clear();
             textBox5.DataBindings.Add("Text", dataGridView1.DataSource, "MaDichVu");
+        }
+
+      
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            command = new SqlCommand("SELECT GiaTien FROM DichVu WHERE MaDichVu = @MaDichVu", connection);
+
+            // Lấy mã dịch vụ
+            string maDichVu = textBox5.Text;
+
+            // Lấy số lượng dịch vụ
+            int soLuongDichVu = Convert.ToInt32(textBox3.Text);
+
+            // Gán mã dịch vụ và số lượng dịch vụ cho các biến tương ứng trong đối tượng SqlCommand
+            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+
+            // Thực thi truy vấn SELECT
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                double giaTienDichVu = Convert.ToDouble(reader["GiaTien"]);
+
+                // Tính tiền dịch vụ
+                double tienDichVu = giaTienDichVu * soLuongDichVu;
+
+                // Hiển thị tiền dịch vụ trên giao diện người dùng
+                textBox6.Text = tienDichVu.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Mã dịch vụ không hợp lệ!");
+            }
+            reader.Close();
+
+            command = new SqlCommand("SELECT TienSan FROM DatSan WHERE MaDatSan = @MaDatSan", connection);
+
+            // Lấy mã đặt sân
+            string maDatSan = textBox4.Text;
+
+            // Gán mã đặt sân cho tham số trong truy vấn
+            command.Parameters.AddWithValue("@MaDatSan", maDatSan);
+
+            // Thực thi truy vấn SELECT
+            SqlDataReader reader1 = command.ExecuteReader();
+
+            if (reader1.Read())
+            {
+                double giaTienSan = Convert.ToDouble(reader1["TienSan"]);
+
+                // Hiển thị giá tiền sân trên giao diện người dùng
+                textBox7.Text = giaTienSan.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Mã đặt sân không hợp lệ!");
+            }
+            reader1.Close();
+
+            double tienDichVu1 = Convert.ToDouble(textBox6.Text);
+            double giaTienSan1 = Convert.ToDouble(textBox7.Text);
+            double tongTien = tienDichVu1 + giaTienSan1;
+            textBox2.Text = tongTien.ToString();
+
+            dataGridView1.Refresh();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+            // Tạo đối tượng SqlCommand
+            SqlCommand command = new SqlCommand("UPDATE HoaDon SET SoLuongDichVu = @SoLuongDichVu, MaDatSan = @MaDatSan, MaDichVu = @MaDichVu, TongThanhTien = @TongThanhTien WHERE MaHoaDon = @MaHoaDon", connection);
+
+            // Lấy giá trị từ các textbox
+            string maHoaDon = textBox1.Text;
+            int soLuongDichVu = Convert.ToInt32(textBox3.Text);
+            string maDatSan = textBox4.Text;
+            string maDichVu = textBox5.Text;
+            double tongTien = Convert.ToDouble(textBox2.Text);
+
+            // Gán giá trị cho các biến trong đối tượng SqlCommand
+            command.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+            command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
+            command.Parameters.AddWithValue("@MaDatSan", maDatSan);
+            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+            command.Parameters.AddWithValue("@TongThanhTien", tongTien);
+
+            // Thực thi truy vấn UPDATE
+            command.ExecuteNonQuery();
+
+            // Cập nhật dữ liệu trong datagridview
+            dataGridView1.Refresh();
+
+            // Đóng kết nối
+            //connection.Close();
+
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+     
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
