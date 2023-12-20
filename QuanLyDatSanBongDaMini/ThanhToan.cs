@@ -16,10 +16,11 @@ namespace QuanLyDatSanBongDaMini
     {
         SqlConnection connection;
         SqlCommand command;
-        string str = @"Data Source=TRIS72;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
+        string str = @"Data Source=ANHTU;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
         SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable table = new DataTable();
         DataTable table1 = new DataTable();
+        DataTable table2 = new DataTable();
         void loaddata()
         {
 
@@ -39,6 +40,16 @@ namespace QuanLyDatSanBongDaMini
             table1.Clear();
             adapter.Fill(table1);
             dataGridView2.DataSource = table1;
+        }
+
+        void loaddata3()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "select * from DatSan";
+            adapter.SelectCommand = command;
+            table2.Clear();
+            adapter.Fill(table2);
+            dataGridView3.DataSource = table2;
         }
         public ThanhToan()
         {
@@ -68,6 +79,7 @@ namespace QuanLyDatSanBongDaMini
             connection.Open();
             loaddata();
             loaddata2();
+            loaddata3();
             bingding();
         }
 
@@ -158,11 +170,19 @@ namespace QuanLyDatSanBongDaMini
             textBox2.Text = tongTien.ToString();
 
             dataGridView1.Refresh();
+
+            connection.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                // Mở kết nối CSDL
+                connection.Open();
+            }
+
             // Tạo đối tượng SqlCommand
             SqlCommand command = new SqlCommand("UPDATE HoaDon SET SoLuongDichVu = @SoLuongDichVu, MaDatSan = @MaDatSan, MaDichVu = @MaDichVu, TongThanhTien = @TongThanhTien WHERE MaHoaDon = @MaHoaDon", connection);
 
@@ -186,8 +206,10 @@ namespace QuanLyDatSanBongDaMini
             // Cập nhật dữ liệu trong datagridview
             dataGridView1.Refresh();
 
+            loaddata();
+
             // Đóng kết nối
-            //connection.Close();
+            connection.Close();
 
 
         }
@@ -208,6 +230,86 @@ namespace QuanLyDatSanBongDaMini
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            
+ 
+
+            // Tạo đối tượng SqlCommand
+            SqlCommand command = new SqlCommand("INSERT INTO HoaDon (SoLuongDichVu, MaDatSan, MaDichVu, TongThanhTien) VALUES (@SoLuongDichVu, @MaDatSan, @MaDichVu, @TongThanhTien); SELECT SCOPE_IDENTITY();", connection);
+
+            // Lấy giá trị từ các textbox
+            int soLuongDichVu = Convert.ToInt32(textBox3.Text);
+            string maDatSan = textBox4.Text;
+            string maDichVu = textBox5.Text;
+            double tongTien = Convert.ToDouble(textBox2.Text);
+
+            // Gán giá trị cho các biến trong đối tượng SqlCommand
+            command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
+            command.Parameters.AddWithValue("@MaDatSan", maDatSan);
+            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+            command.Parameters.AddWithValue("@TongThanhTien", tongTien);
+
+            //// Mở kết nối CSDL
+            //connection.Open();
+
+            //// Thực thi truy vấn INSERT và lấy giá trị khóa chính tự động tăng
+            //int maHoaDon = Convert.ToInt32(command.ExecuteScalar());
+
+            //dataGridView1.Refresh();
+            //// Đóng kết nối
+            //connection.Close();
+
+            //// Thực hiện các bước cập nhật datagridview hoặc các công việc khác sau khi thêm dữ liệu
+            ///
+
+
+            // Mở kết nối CSDL
+            connection.Open();
+
+            try
+            {
+                // Thực thi truy vấn INSERT và lấy giá trị khóa chính tự động tăng
+                int maHoaDon = Convert.ToInt32(command.ExecuteScalar());
+
+                dataGridView1.Refresh();
+                MessageBox.Show("Thêm dữ liệu thành công!");
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không thể thêm dữ liệu. Lỗi: " + ex.Message);
+                MessageBox.Show("Không thể thêm dữ liệu. Mã đặt sân đã được thanh toán");
+            }
+            dataGridView1.Refresh();
+
+            loaddata();
+            // Đóng kết nối
+            connection.Close();
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
