@@ -63,6 +63,7 @@
             this.form_datsan.TabIndex = 0;
             this.form_datsan.Text = "ĐẶT SÂN";
             this.form_datsan.UseVisualStyleBackColor = true;
+            this.form_datsan.Click += new System.EventHandler(this.form_datsan_Click);
             // 
             // form_thanhtoan
             // 
@@ -73,6 +74,7 @@
             this.form_thanhtoan.TabIndex = 1;
             this.form_thanhtoan.Text = "THANH TOÁN";
             this.form_thanhtoan.UseVisualStyleBackColor = true;
+            this.form_thanhtoan.Click += new System.EventHandler(this.form_thanhtoan_Click);
             // 
             // form_quanlykhachhang
             // 

@@ -24,3 +24,4 @@ C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatS
 C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
 C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyNhanVien.resources

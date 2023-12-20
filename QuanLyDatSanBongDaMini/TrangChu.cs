@@ -21,7 +21,7 @@ namespace QuanLyDatSanBongDaMini
         {
             InitializeComponent();
         }
-
+        
         public TrangChu(string tenDangNhap, string tenNhanVien, string matkhau, string quyen)
         {
             InitializeComponent();
@@ -33,6 +33,7 @@ namespace QuanLyDatSanBongDaMini
 
         private void form_quanlynhanvien_Click(object sender, EventArgs e)
         {
+            //Nếu là quản lý thì được thao tác trên tất cả form ở trang chủ
             if (quyen == "quanly")
             {
                 QuanLyNhanVien f = new QuanLyNhanVien();
@@ -44,5 +45,15 @@ namespace QuanLyDatSanBongDaMini
             }
         }
 
+        private void form_datsan_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void form_thanhtoan_Click(object sender, EventArgs e)
+        {
+            ThanhToan f = new ThanhToan();
+            f.ShowDialog();
+        }
     }
 }
