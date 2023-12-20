@@ -97,6 +97,8 @@ namespace QuanLyDatSanBongDaMini
             txt_TenTaiKhoan.Text = dgv_QuanLyNhanVien.Rows[i].Cells[1].Value.ToString();
             txt_MatKhau.Text = dgv_QuanLyNhanVien.Rows[i].Cells[2].Value.ToString();
             txt_ChucVu.Text = dgv_QuanLyNhanVien.Rows[i].Cells[3].Value.ToString();
+
+            txt_MaTaiKhoan.Enabled = false;
         }
     }
 }
