@@ -1,0 +1,26 @@
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe.config
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.pdb
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DangNhap.resources
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DatSan.resources
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.Properties.Resources.resources
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.TrangChu.resources
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.GenerateResource.cache
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
+D:\NMCNPM\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe.config
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.pdb
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DangNhap.resources
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DatSan.resources
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.Properties.Resources.resources
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.TrangChu.resources
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.GenerateResource.cache
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+D:\Thuyettrinh\QuanLyDatSanBongDaMini-master (2)\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini-master\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
