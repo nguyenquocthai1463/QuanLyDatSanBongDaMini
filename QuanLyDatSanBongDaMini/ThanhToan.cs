@@ -99,7 +99,7 @@ namespace QuanLyDatSanBongDaMini
             textBox2.DataBindings.Add("Text", dataGridView1.DataSource, "TongThanhTien");
 
             textBox3.DataBindings.Clear();
-            textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "MaKhachHang");
+            textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
 
             //textBox3.DataBindings.Clear();
             //textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "SoLuongDichVu");
@@ -115,7 +115,7 @@ namespace QuanLyDatSanBongDaMini
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            command = new SqlCommand("SELECT SUM(TongTien) FROM DichVu WHERE MaKhachHang = @MaKhachHang", connection);
+            command = new SqlCommand("SELECT SUM(TongTien) FROM DichVu WHERE MaKH = @MaKhachHang", connection);
 
             // Lấy mã dịch vụ
             string maKhachHang = textBox3.Text;
@@ -136,10 +136,11 @@ namespace QuanLyDatSanBongDaMini
 
                 // Tính tiền dịch vụ
                 //double tienDichVu = giaTienDichVu * soLuongDichVu;
-                double tienDichVu = giaTienDichVu ;
+                /*double tienDichVu = giaTienDichVu */;
 
                 // Hiển thị tiền dịch vụ trên giao diện người dùng
-                textBox6.Text = tienDichVu.ToString();
+                //textBox6.Text = tienDichVu.ToString();
+                textBox6.Text = giaTienDichVu.ToString();
 
             }
             else
@@ -178,7 +179,7 @@ namespace QuanLyDatSanBongDaMini
             //textBox2.Text = tongTien.ToString();
 
 
-            command = new SqlCommand("SELECT SUM(TienSan) FROM DatSan WHERE MaKhachHang = @MaKhachHang", connection);
+            command = new SqlCommand("SELECT SUM(ThanhTien) FROM DatSan WHERE MaKH = @MaKhachHang", connection);
 
             // Lấy mã đặt sân
             //string maDatSan = textBox4.Text;
@@ -215,42 +216,48 @@ namespace QuanLyDatSanBongDaMini
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if (connection.State == ConnectionState.Closed)
-            {
-                // Mở kết nối CSDL
-                connection.Open();
-            }
-
-            // Tạo đối tượng SqlCommand
-            SqlCommand command = new SqlCommand("UPDATE HoaDon SET SoLuongDichVu = @SoLuongDichVu, MaDatSan = @MaDatSan, MaDichVu = @MaDichVu, TongThanhTien = @TongThanhTien WHERE MaHoaDon = @MaHoaDon", connection);
-
-            // Lấy giá trị từ các textbox
-            string maHoaDon = textBox1.Text;
-            int soLuongDichVu = Convert.ToInt32(textBox3.Text);
-            //string maDatSan = textBox4.Text;
-            //string maDichVu = textBox5.Text;
-            double tongTien = Convert.ToDouble(textBox2.Text);
-
-            // Gán giá trị cho các biến trong đối tượng SqlCommand
-            command.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
-            command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
-            //command.Parameters.AddWithValue("@MaDatSan", maDatSan);
-            //command.Parameters.AddWithValue("@MaDichVu", maDichVu);
-            command.Parameters.AddWithValue("@TongThanhTien", tongTien);
-
-            // Thực thi truy vấn UPDATE
-            command.ExecuteNonQuery();
-
-            // Cập nhật dữ liệu trong datagridview
-            dataGridView1.Refresh();
-
-            loaddata();
-
-            // Đóng kết nối
-            connection.Close();
 
 
         }
+
+        //void buttonluusua()
+        //{
+
+        //    if (connection.State == ConnectionState.Closed)
+        //    {
+        //        // Mở kết nối CSDL
+        //        connection.Open();
+        //    }
+
+        //    // Tạo đối tượng SqlCommand
+        //    //SqlCommand command = new SqlCommand("UPDATE HoaDon SET SoLuongDichVu = @SoLuongDichVu, MaDatSan = @MaDatSan, MaDichVu = @MaDichVu, TongThanhTien = @TongThanhTien WHERE MaHoaDon = @MaHoaDon", connection);
+        //    SqlCommand command = new SqlCommand("UPDATE HoaDon SET  TongThanhTien = @TongThanhTien WHERE MaKH = @MaKhachHang", connection);
+
+        //    // Lấy giá trị từ các textbox
+        //    string maHoaDon = textBox1.Text;
+        //    //int soLuongDichVu = Convert.ToInt32(textBox3.Text);
+        //    //string maDatSan = textBox4.Text;
+        //    //string maDichVu = textBox5.Text;
+        //    double tongTien = Convert.ToDouble(textBox2.Text);
+
+        //    // Gán giá trị cho các biến trong đối tượng SqlCommand
+        //    command.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+        //    //command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
+        //    //command.Parameters.AddWithValue("@MaDatSan", maDatSan);
+        //    //command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+        //    command.Parameters.AddWithValue("@TongThanhTien", tongTien);
+
+        //    // Thực thi truy vấn UPDATE
+        //    command.ExecuteNonQuery();
+
+        //    // Cập nhật dữ liệu trong datagridview
+        //    dataGridView1.Refresh();
+
+        //    loaddata();
+
+        //    // Đóng kết nối
+        //    connection.Close();
+        //}
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
@@ -279,7 +286,7 @@ namespace QuanLyDatSanBongDaMini
 
             // Tạo đối tượng SqlCommand
             //SqlCommand command = new SqlCommand("INSERT INTO HoaDon (SoLuongDichVu, MaDatSan, MaDichVu, TongThanhTien) VALUES (@SoLuongDichVu, @MaDatSan, @MaDichVu, @TongThanhTien); SELECT SCOPE_IDENTITY();", connection);
-            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaKhachHang) VALUES (@TongThanhTien, @MaKhachHang); SELECT SCOPE_IDENTITY();", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaKH) VALUES (@TongThanhTien, @MaKhachHang); SELECT SCOPE_IDENTITY();", connection);
 
             // Lấy giá trị từ các textbox
             //int soLuongDichVu = Convert.ToInt32(textBox3.Text);
@@ -318,12 +325,12 @@ namespace QuanLyDatSanBongDaMini
                 int maHoaDon = Convert.ToInt32(command.ExecuteScalar());
 
                 dataGridView1.Refresh();
-                MessageBox.Show("Thêm dữ liệu thành công!");
+                MessageBox.Show("Xuất hóa đơn thành công!");
             }
             catch (Exception ex)
             {
                 //MessageBox.Show("Không thể thêm dữ liệu. Lỗi: " + ex.Message);
-                MessageBox.Show("Không thể thêm dữ liệu. Mã đặt sân đã được thanh toán");
+                MessageBox.Show("Lỗi : Không thể xuất hóa đơn ");
             }
             dataGridView1.Refresh();
 
