@@ -34,7 +34,7 @@ namespace QuanLyDatSanBongDaMini
         private void form_quanlynhanvien_Click(object sender, EventArgs e)
         {
             //Nếu là quản lý thì được thao tác trên tất cả form ở trang chủ
-            if (quyen == "quanly")
+            if (quyen == "Quản lý")
             {
                 QuanLyNhanVien f = new QuanLyNhanVien();
                 f.ShowDialog();
@@ -53,6 +53,12 @@ namespace QuanLyDatSanBongDaMini
         private void form_thanhtoan_Click(object sender, EventArgs e)
         {
             ThanhToan f = new ThanhToan();
+            f.ShowDialog();
+        }
+
+        private void form_quanlykhachhang_Click(object sender, EventArgs e)
+        {
+            QuanLyKhachHang f = new QuanLyKhachHang();
             f.ShowDialog();
         }
     }
