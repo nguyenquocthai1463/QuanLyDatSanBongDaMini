@@ -85,6 +85,7 @@
             this.form_quanlykhachhang.TabIndex = 2;
             this.form_quanlykhachhang.Text = "QUẢN LÝ KHÁCH HÀNG";
             this.form_quanlykhachhang.UseVisualStyleBackColor = true;
+            this.form_quanlykhachhang.Click += new System.EventHandler(this.form_quanlykhachhang_Click);
             // 
             // form_quanlyhoadon
             // 
