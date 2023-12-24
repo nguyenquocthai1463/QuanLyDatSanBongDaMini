@@ -101,14 +101,7 @@ namespace QuanLyDatSanBongDaMini
             textBox3.DataBindings.Clear();
             textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
 
-            //textBox3.DataBindings.Clear();
-            //textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "SoLuongDichVu");
 
-            //textBox4.DataBindings.Clear();
-            //textBox4.DataBindings.Add("Text", dataGridView1.DataSource, "MaDatSan");
-
-            //textBox5.DataBindings.Clear();
-            //textBox5.DataBindings.Add("Text", dataGridView1.DataSource, "MaDichVu");
         }
 
       

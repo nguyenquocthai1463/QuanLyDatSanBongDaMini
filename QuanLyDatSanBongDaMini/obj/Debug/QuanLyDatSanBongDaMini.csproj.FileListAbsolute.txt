@@ -41,3 +41,4 @@ C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyKhachHang.resources

@@ -63,7 +63,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(569, 171);
+            this.dataGridView1.Size = new System.Drawing.Size(1059, 131);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
@@ -160,13 +160,13 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(448, 175);
+            this.dataGridView2.Size = new System.Drawing.Size(1057, 95);
             this.dataGridView2.TabIndex = 19;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(203, 229);
+            this.button4.Location = new System.Drawing.Point(453, 191);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(200, 42);
             this.button4.TabIndex = 21;
@@ -191,7 +191,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(1055, 190);
+            this.dataGridView3.Size = new System.Drawing.Size(1055, 100);
             this.dataGridView3.TabIndex = 23;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
@@ -201,7 +201,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(25, 145);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(603, 291);
+            this.groupBox1.Size = new System.Drawing.Size(1087, 254);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DANH SÁCH HÓA ĐƠN";
@@ -209,22 +209,22 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Location = new System.Drawing.Point(634, 145);
+            this.groupBox2.Location = new System.Drawing.Point(25, 613);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(478, 291);
+            this.groupBox2.Size = new System.Drawing.Size(1087, 156);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "DANH SÁCH DỊCH VỤ ";
+            this.groupBox2.Text = "DANH SÁCH SỬ DỤNG DỊCH VỤ ";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridView3);
-            this.groupBox3.Location = new System.Drawing.Point(25, 467);
+            this.groupBox3.Location = new System.Drawing.Point(25, 425);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1087, 252);
+            this.groupBox3.Size = new System.Drawing.Size(1087, 160);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "DANH SÁCH ĐẶT SÂN";
+            this.groupBox3.Text = "DANH SÁCH SÂN ĐẶT";
             // 
             // label1
             // 
@@ -246,13 +246,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 758);
+            this.ClientSize = new System.Drawing.Size(1124, 786);
             this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox7);
