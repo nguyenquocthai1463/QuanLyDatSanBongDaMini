@@ -105,6 +105,45 @@ namespace QuanLyDatSanBongDaMini
             tb_tiensan.Text = "";
         }
 
+        void TimLichDatSan()
+        {
+            try
+            {
+                conn.Open();
+                string searchText = tb_search.Text;
+                string sql = "SELECT * FROM DatSan WHERE MaDatSan LIKE '%' + @SearchText + '%'";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@SearchText", searchText);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                lv_datsan.Items.Clear();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ListViewItem lvi = lv_datsan.Items.Add(reader[0].ToString());
+
+                        for (int i = 1; i < reader.FieldCount; i++)
+                        {
+                            lvi.SubItems.Add(reader[i].ToString());
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi tìm lịch đặt sân! ");
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm lịch đặt sân! " + ex.Message);
+            }
+        }
+
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -115,7 +154,7 @@ namespace QuanLyDatSanBongDaMini
             LoadDuLieuKH();
             LoadDuLieuSan();
             HienThiDSDS();
-            tb_masan.Enabled = tb_makh.Enabled = tb_tiensan.Enabled = trasan.Enabled = false;
+            tb_masan.Enabled = tb_makh.Enabled = tb_tiensan.Enabled = trasan.Enabled = flowLayoutPanel1.Enabled = false;
         }
 
         private void cb_kh_SelectedIndexChanged(object sender, EventArgs e)
@@ -270,6 +309,28 @@ namespace QuanLyDatSanBongDaMini
             {
                 MessageBox.Show("Vui lòng chọn lịch đặt muốn xóa");
             }
+        }
+
+        private void bt_search_Click(object sender, EventArgs e)
+        {
+            bt_datsan.Enabled = false;
+
+            if (tb_search.Text != "")
+            {
+                TimLichDatSan();
+                cb_kh.Enabled = cb_san.Enabled = giodat.Enabled = nhansan.Enabled = trasan.Enabled = tb_tiensan.Enabled = tb_makh.Enabled = tb_masan.Enabled = bt_datsan.Enabled = bt_lammoi.Enabled = bt_sua.Enabled = bt_xoa.Enabled = button2.Enabled = true;
+                flowLayoutPanel1.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Nhập mã đặt sân cần tìm");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Enabled = true;
+            cb_kh.Enabled = cb_san.Enabled = giodat.Enabled = nhansan.Enabled = trasan.Enabled = tb_tiensan.Enabled = tb_makh.Enabled = tb_masan.Enabled = bt_datsan.Enabled = bt_lammoi.Enabled = bt_sua.Enabled = bt_xoa.Enabled = button2.Enabled = false;
         }
     }
 }
