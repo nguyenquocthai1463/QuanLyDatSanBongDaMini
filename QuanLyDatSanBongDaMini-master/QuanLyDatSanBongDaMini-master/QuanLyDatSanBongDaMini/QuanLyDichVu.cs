@@ -67,7 +67,7 @@
                 txtsoluong.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                 txtDongia.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 txtKhachhang.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                CalculateAndDisplayTotalPrice();
+     
             }
 
 
