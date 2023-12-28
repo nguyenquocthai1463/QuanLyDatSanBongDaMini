@@ -52,6 +52,9 @@
             this.gbKH = new System.Windows.Forms.GroupBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblHoTen = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gb_LKH.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbKH.SuspendLayout();
@@ -196,7 +199,8 @@
             this.lsvKH.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader1});
             this.lsvKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvKH.FullRowSelect = true;
             this.lsvKH.GridLines = true;
@@ -238,10 +242,10 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(919, 55);
+            this.txtPhone.Location = new System.Drawing.Point(842, 55);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(368, 27);
+            this.txtPhone.Size = new System.Drawing.Size(445, 27);
             this.txtPhone.TabIndex = 3;
             // 
             // txtMaKH
@@ -249,7 +253,7 @@
             this.txtMaKH.Location = new System.Drawing.Point(146, 58);
             this.txtMaKH.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.Size = new System.Drawing.Size(595, 27);
+            this.txtMaKH.Size = new System.Drawing.Size(533, 27);
             this.txtMaKH.TabIndex = 1;
             // 
             // txtHoTen
@@ -257,7 +261,7 @@
             this.txtHoTen.Location = new System.Drawing.Point(146, 116);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(595, 27);
+            this.txtHoTen.Size = new System.Drawing.Size(533, 27);
             this.txtHoTen.TabIndex = 1;
             // 
             // label5
@@ -272,6 +276,8 @@
             // 
             // gbKH
             // 
+            this.gbKH.Controls.Add(this.txtCCCD);
+            this.gbKH.Controls.Add(this.label2);
             this.gbKH.Controls.Add(this.lblCB);
             this.gbKH.Controls.Add(this.txtPhone);
             this.gbKH.Controls.Add(this.txtMaKH);
@@ -293,7 +299,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(805, 58);
+            this.lblPhone.Location = new System.Drawing.Point(750, 55);
             this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(84, 20);
@@ -309,6 +315,30 @@
             this.lblHoTen.Size = new System.Drawing.Size(59, 20);
             this.lblHoTen.TabIndex = 0;
             this.lblHoTen.Text = "Họ tên";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(750, 124);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(163, 20);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Căn Cước Công Dân";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(936, 117);
+            this.txtCCCD.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(353, 27);
+            this.txtCCCD.TabIndex = 41;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Căn Cước Công Dân";
+            this.columnHeader1.Width = 288;
             // 
             // QuanLyKhachHang
             // 
@@ -357,5 +387,8 @@
         private System.Windows.Forms.GroupBox gbKH;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblHoTen;
+        private System.Windows.Forms.TextBox txtCCCD;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

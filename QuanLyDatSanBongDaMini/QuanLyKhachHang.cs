@@ -30,7 +30,7 @@ namespace QuanLyDatSanBongDaMini
                 using (SqlConnection con = new SqlConnection(conStr))
                 {
                     con.Open();
-                    string sql = "SELECT MaKhachHang, HovaTen, SoDienThoai FROM KhachHang";
+                    string sql = "SELECT MaKH, HovaTen, SoDienThoai, CanCuocCongDan FROM KhachHang";
                     SqlCommand cmd = new SqlCommand(sql, con);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -38,9 +38,10 @@ namespace QuanLyDatSanBongDaMini
 
                     while (reader.Read())
                     {
-                        ListViewItem item = new ListViewItem(reader["MaKhachHang"].ToString());
+                        ListViewItem item = new ListViewItem(reader["MaKH"].ToString());
                         item.SubItems.Add(reader["HovaTen"].ToString());
                         item.SubItems.Add(reader["SoDienThoai"].ToString());
+                        item.SubItems.Add(reader["CanCuocCongDan"].ToString());
                         lsvKH.Items.Add(item);
                     }
 
@@ -58,6 +59,7 @@ namespace QuanLyDatSanBongDaMini
             txtPhone.Text = "";
             txtMaKH.Text = "";
             txtHoTen.Text = "";
+            txtCCCD.Text = "";
             txtMaKH.Focus();
         }
 
@@ -120,6 +122,21 @@ namespace QuanLyDatSanBongDaMini
                 return false;
             }
         }
+        bool KiemtraCanCuocCongDan(string canCuocCongDan)
+        {
+            // Loại bỏ các ký tự không phải là chữ số
+            string chiSoCCCD = Regex.Replace(canCuocCongDan, @"[^\d]", "");
+
+            // Kiểm tra độ dài của số điện thoại
+            if (canCuocCongDan.Length == 10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         int checktrung()
         {
             int chk = 0;
@@ -171,6 +188,7 @@ namespace QuanLyDatSanBongDaMini
                 txtMaKH.Text = lsvKH.SelectedItems[0].SubItems[0].Text;
                 txtHoTen.Text = lsvKH.SelectedItems[0].SubItems[1].Text;
                 txtPhone.Text = lsvKH.SelectedItems[0].SubItems[2].Text;
+                txtCCCD.Text = lsvKH.SelectedItems[0].SubItems[3].Text;
             }
         }
 
@@ -182,6 +200,7 @@ namespace QuanLyDatSanBongDaMini
         private void QuanLyKhachHang_Load_1(object sender, EventArgs e)
         {
             txtMaKH.Enabled = false;
+
             HienThiDSKH();
         }
 
@@ -189,42 +208,52 @@ namespace QuanLyDatSanBongDaMini
         {
             if (checkrong() == 1)
             {
-                if (checktrung() == 0)
+                if (KiemTraSoDienThoai(txtPhone.Text) && KiemtraCanCuocCongDan(txtCCCD.Text))
                 {
-                    if (KiemTraSoDienThoai(txtPhone.Text))
+                    try
                     {
-                        try
+                        using (SqlConnection con = new SqlConnection(conStr))
                         {
-                            using (SqlConnection con = new SqlConnection(conStr))
+                            
+                            con.Open();
+
+                            // Kiểm tra xem số điện thoại hoặc số căn cước công dân đã tồn tại trong cơ sở dữ liệu hay chưa
+                            string checkDuplicateQuery = "SELECT COUNT(*) FROM KhachHang WHERE SoDienThoai = @SoDienThoai OR CanCuocCongDan = @CanCuocCongDan";
+                            SqlCommand checkDuplicateCmd = new SqlCommand(checkDuplicateQuery, con);
+                            checkDuplicateCmd.Parameters.AddWithValue("@SoDienThoai", txtPhone.Text);
+                            checkDuplicateCmd.Parameters.AddWithValue("@CanCuocCongDan", txtCCCD.Text);
+                            int duplicateCount = (int)checkDuplicateCmd.ExecuteScalar();
+
+                            if (duplicateCount == 0)
                             {
-                                btnThem.Enabled = false;
-                                con.Open();
-                                string sql = "INSERT INTO KhachHang (HovaTen, SoDienThoai) VALUES (@HovaTen, @SoDienThoai)";
-                                SqlCommand cmd = new SqlCommand(sql, con);
-                                cmd.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
-                                cmd.Parameters.AddWithValue("@SoDienThoai", txtPhone.Text);
-                                cmd.ExecuteNonQuery();
+                                // Thực hiện câu truy vấn INSERT
+                                string insertQuery = "INSERT INTO KhachHang (HovaTen, SoDienThoai, CanCuocCongDan) VALUES (@HovaTen, @SoDienThoai, @CanCuocCongDan)";
+                                SqlCommand insertCmd = new SqlCommand(insertQuery, con);
+                                insertCmd.Parameters.AddWithValue("@HovaTen", txtHoTen.Text);
+                                insertCmd.Parameters.AddWithValue("@SoDienThoai", txtPhone.Text);
+                                insertCmd.Parameters.AddWithValue("@CanCuocCongDan", txtCCCD.Text);
+                                insertCmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Thêm mới Khách hàng thành công");
                                 HienThiDSKH();
                                 setNull();
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi khi thêm mới Khách hàng: " + ex.Message);
+                            else
+                            {
+                                MessageBox.Show("Số điện thoại hoặc số căn cước công dân đã tồn tại");
+                            }
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Số điện thoại không đúng định dạng (phải có 10 chữ số).");
-                        txtPhone.Focus();
+                        MessageBox.Show("Lỗi khi thêm mới Khách hàng: " + ex.Message);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Số điện thoại khách hàng đã tồn tại");
+                    MessageBox.Show("Số điện thoại hoặc Căn cước công dân không đúng định dạng (phải có 10 chữ số).");
                     txtPhone.Focus();
+                    txtCCCD.Focus();
                 }
             }
             else
@@ -243,7 +272,7 @@ namespace QuanLyDatSanBongDaMini
                     {
                         con.Open();
                         string maKH = lsvKH.SelectedItems[0].SubItems[0].Text;
-                        string sql = "DELETE FROM KhachHang WHERE MaKhachHang = @MaKH";
+                        string sql = "DELETE FROM KhachHang WHERE MaKH = @MaKH";
                         SqlCommand cmd = new SqlCommand(sql, con);
                         cmd.Parameters.AddWithValue("@MaKH", maKH);
                         cmd.ExecuteNonQuery();
@@ -270,20 +299,46 @@ namespace QuanLyDatSanBongDaMini
             {
                 try
                 {
-                    using (SqlConnection con = new SqlConnection(conStr))
+                    if (KiemTraSoDienThoai(txtPhone.Text) && KiemtraCanCuocCongDan(txtCCCD.Text))
                     {
-                        con.Open();
-                        string maKH = lsvKH.SelectedItems[0].SubItems[0].Text;
-                        string sql = "UPDATE KhachHang SET HovaTen = @HoTen, SoDienThoai = @Phone WHERE MaKhachHang = @MaKH";
-                        SqlCommand cmd = new SqlCommand(sql, con);
-                        cmd.Parameters.AddWithValue("@HoTen", txtHoTen.Text);
-                        cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
-                        cmd.Parameters.AddWithValue("@MaKH", maKH);
-                        cmd.ExecuteNonQuery();
+                        using (SqlConnection con = new SqlConnection(conStr))
+                        {
+                            con.Open();
+                            string maKH = lsvKH.SelectedItems[0].SubItems[0].Text;
 
-                        MessageBox.Show("Cập nhật khách hàng '" + maKH + "' thành công");
-                        HienThiDSKH();
-                        setNull();
+                            // Kiểm tra xem số điện thoại hoặc số căn cước công dân đã tồn tại trong cơ sở dữ liệu hay chưa
+                            string checkDuplicateQuery = "SELECT COUNT(*) FROM KhachHang WHERE (SoDienThoai = @SoDienThoai OR CanCuocCongDan = @CanCuocCongDan) AND MaKH != @MaKH";
+                            SqlCommand checkDuplicateCmd = new SqlCommand(checkDuplicateQuery, con);
+                            checkDuplicateCmd.Parameters.AddWithValue("@SoDienThoai", txtPhone.Text);
+                            checkDuplicateCmd.Parameters.AddWithValue("@CanCuocCongDan", txtCCCD.Text);
+                            checkDuplicateCmd.Parameters.AddWithValue("@MaKH", maKH);
+                            int duplicateCount = (int)checkDuplicateCmd.ExecuteScalar();
+
+                            if (duplicateCount == 0)
+                            {
+                                string sql = "UPDATE KhachHang SET HovaTen = @HoTen, SoDienThoai = @Phone, CanCuocCongDan = @CCCD WHERE MaKH = @MaKH";
+                                SqlCommand cmd = new SqlCommand(sql, con);
+                                cmd.Parameters.AddWithValue("@HoTen", txtHoTen.Text);
+                                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
+                                cmd.Parameters.AddWithValue("@CCCD", txtCCCD.Text);
+                                cmd.Parameters.AddWithValue("@MaKH", maKH);
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Cập nhật khách hàng '" + maKH + "' thành công");
+                                HienThiDSKH();
+                                setNull();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Số điện thoại hoặc số căn cước công dân đã tồn tại");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số điện thoại hoặc Căn cước công dân không đúng định dạng (phải có 10 chữ số).");
+                        txtPhone.Focus();
+                        txtCCCD.Focus();
                     }
                 }
                 catch (Exception ex)
@@ -311,7 +366,15 @@ namespace QuanLyDatSanBongDaMini
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn thoát", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
