@@ -58,3 +58,6 @@ F:\WorkSpace\LuuDuLieuSinhVien\LapTrinhWeb\QuanLyDatSanBongDaMini\QuanLyDatSanBo
 F:\WorkSpace\LuuDuLieuSinhVien\LapTrinhWeb\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
 F:\WorkSpace\LuuDuLieuSinhVien\LapTrinhWeb\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 F:\WorkSpace\LuuDuLieuSinhVien\LapTrinhWeb\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyKhachHang.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources

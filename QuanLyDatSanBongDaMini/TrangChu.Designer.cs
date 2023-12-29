@@ -36,6 +36,7 @@
             this.form_quanlynhanvien = new System.Windows.Forms.Button();
             this.form_quanlydichvu = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_DangXuat = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             this.flowLayoutPanel1.Controls.Add(this.form_quanlyhoadon);
             this.flowLayoutPanel1.Controls.Add(this.form_quanlynhanvien);
             this.flowLayoutPanel1.Controls.Add(this.form_quanlydichvu);
+            this.flowLayoutPanel1.Controls.Add(this.btn_DangXuat);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -127,6 +129,17 @@
             this.panel1.Size = new System.Drawing.Size(992, 636);
             this.panel1.TabIndex = 1;
             // 
+            // btn_DangXuat
+            // 
+            this.btn_DangXuat.Location = new System.Drawing.Point(3, 608);
+            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_DangXuat.Name = "btn_DangXuat";
+            this.btn_DangXuat.Size = new System.Drawing.Size(197, 97);
+            this.btn_DangXuat.TabIndex = 6;
+            this.btn_DangXuat.Text = "ĐĂNG XUẤT";
+            this.btn_DangXuat.UseVisualStyleBackColor = true;
+            this.btn_DangXuat.Click += new System.EventHandler(this.btn_DangXuat_Click);
+            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -154,5 +167,6 @@
         private System.Windows.Forms.Button form_quanlyhoadon;
         private System.Windows.Forms.Button form_quanlynhanvien;
         private System.Windows.Forms.Button form_quanlydichvu;
+        private System.Windows.Forms.Button btn_DangXuat;
     }
 }
