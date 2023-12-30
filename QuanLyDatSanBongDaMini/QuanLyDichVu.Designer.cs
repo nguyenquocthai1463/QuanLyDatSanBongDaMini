@@ -31,6 +31,8 @@ namespace QuanLyDatSanBongDaMini
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtThanhTien = new System.Windows.Forms.TextBox();
+            this.btnCalculateTotal = new System.Windows.Forms.Button();
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.lable = new System.Windows.Forms.Label();
             this.txtTonkho = new System.Windows.Forms.TextBox();
@@ -49,8 +51,6 @@ namespace QuanLyDatSanBongDaMini
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCalculateTotal = new System.Windows.Forms.Button();
-            this.txtThanhTien = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +96,25 @@ namespace QuanLyDatSanBongDaMini
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dịch vụ";
             // 
+            // txtThanhTien
+            // 
+            this.txtThanhTien.Location = new System.Drawing.Point(311, 277);
+            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Size = new System.Drawing.Size(117, 26);
+            this.txtThanhTien.TabIndex = 43;
+            // 
+            // btnCalculateTotal
+            // 
+            this.btnCalculateTotal.Location = new System.Drawing.Point(453, 269);
+            this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCalculateTotal.Name = "btnCalculateTotal";
+            this.btnCalculateTotal.Size = new System.Drawing.Size(101, 43);
+            this.btnCalculateTotal.TabIndex = 42;
+            this.btnCalculateTotal.Text = "Tổng";
+            this.btnCalculateTotal.UseVisualStyleBackColor = true;
+            this.btnCalculateTotal.Click += new System.EventHandler(this.btnCalculateTotal_Click_1);
+            // 
             // txtMaKH
             // 
             this.txtMaKH.Location = new System.Drawing.Point(177, 277);
@@ -131,9 +150,9 @@ namespace QuanLyDatSanBongDaMini
             this.label5.Location = new System.Drawing.Point(9, 236);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(176, 25);
+            this.label5.Size = new System.Drawing.Size(132, 25);
             this.label5.TabIndex = 38;
-            this.label5.Text = "Số lượng trong kho";
+            this.label5.Text = "Số lượng  kho";
             // 
             // btnThoat
             // 
@@ -284,25 +303,6 @@ namespace QuanLyDatSanBongDaMini
             this.dataGridView1.Size = new System.Drawing.Size(837, 551);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // btnCalculateTotal
-            // 
-            this.btnCalculateTotal.Location = new System.Drawing.Point(453, 269);
-            this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCalculateTotal.Name = "btnCalculateTotal";
-            this.btnCalculateTotal.Size = new System.Drawing.Size(101, 43);
-            this.btnCalculateTotal.TabIndex = 42;
-            this.btnCalculateTotal.Text = "Tổng";
-            this.btnCalculateTotal.UseVisualStyleBackColor = true;
-            this.btnCalculateTotal.Click += new System.EventHandler(this.btnCalculateTotal_Click_1);
-            // 
-            // txtThanhTien
-            // 
-            this.txtThanhTien.Location = new System.Drawing.Point(311, 277);
-            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(117, 26);
-            this.txtThanhTien.TabIndex = 43;
             // 
             // QuanLyDichVu
             // 
