@@ -78,6 +78,9 @@ namespace QuanLyDatSanBongDaMini
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            txtmaHoaDon.Enabled = false;
+            textBox6.Enabled = false;
+            textBox7.Enabled = false;
             connection = new SqlConnection(str);
             connection.Open();
             loaddata();
@@ -92,15 +95,20 @@ namespace QuanLyDatSanBongDaMini
 
         public void bingding()
         {
-            textBox1.DataBindings.Clear();
-            textBox1.DataBindings.Add("Text", dataGridView1.DataSource, "MaHoaDon");
+            txtmaHoaDon.DataBindings.Clear();
+            txtmaHoaDon.DataBindings.Add("Text", dataGridView1.DataSource, "MaHoaDon");
 
             textBox2.DataBindings.Clear();
             textBox2.DataBindings.Add("Text", dataGridView1.DataSource, "TongThanhTien");
 
             txtmaDatSan.DataBindings.Clear();
-            txtmaDatSan.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
+            txtmaDatSan.DataBindings.Add("Text", dataGridView1.DataSource, "MaDatSan");
 
+            txtMaKH.DataBindings.Clear();
+            txtMaKH.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
+
+            txtMaTaiKhoan.DataBindings.Clear();
+            txtMaTaiKhoan.DataBindings.Add("Text", dataGridView1.DataSource, "MaTK");
 
         }
 
@@ -344,7 +352,7 @@ namespace QuanLyDatSanBongDaMini
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            txtmaHoaDon.Text = "";
             textBox2.Text = "";
             txtmaDatSan.Text = "";
             //textBox4.Text = "";

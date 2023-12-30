@@ -31,7 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtmaHoaDon = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -92,12 +92,12 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Thành tiền";
             // 
-            // textBox1
+            // txtmaHoaDon
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 22);
-            this.textBox1.TabIndex = 7;
+            this.txtmaHoaDon.Location = new System.Drawing.Point(114, 37);
+            this.txtmaHoaDon.Name = "txtmaHoaDon";
+            this.txtmaHoaDon.Size = new System.Drawing.Size(115, 22);
+            this.txtmaHoaDon.TabIndex = 7;
             // 
             // textBox2
             // 
@@ -320,7 +320,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtmaHoaDon);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "ThanhToan";
@@ -341,7 +341,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtmaHoaDon;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
