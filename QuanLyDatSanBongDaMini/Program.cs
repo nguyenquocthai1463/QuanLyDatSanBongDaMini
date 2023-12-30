@@ -18,7 +18,7 @@ namespace QuanLyDatSanBongDaMini
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new DangNhap());
             //Application.Run(new DatSan());
-            Application.Run(new ThanhToan());
+            Application.Run(new QuanLyDichVu());
         }
     }
 }
