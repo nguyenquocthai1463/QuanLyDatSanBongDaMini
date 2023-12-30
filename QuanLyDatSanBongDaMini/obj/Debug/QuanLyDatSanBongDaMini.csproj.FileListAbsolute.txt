@@ -63,7 +63,6 @@ C:\Users\triho\Desktop\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\Q
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe.config
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.exe
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\bin\Debug\QuanLyDatSanBongDaMini.pdb
-D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DangNhap.resources
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.DatSan.resources
@@ -77,3 +76,4 @@ D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBo
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.CoreCompileInputs.cache
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
+D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
