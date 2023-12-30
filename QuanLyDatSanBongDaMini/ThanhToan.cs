@@ -104,11 +104,11 @@ namespace QuanLyDatSanBongDaMini
             txtmaDatSan.DataBindings.Clear();
             txtmaDatSan.DataBindings.Add("Text", dataGridView1.DataSource, "MaDatSan");
 
-            txtMaKH.DataBindings.Clear();
-            txtMaKH.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
+            //txtMaKH.DataBindings.Clear();
+            //txtMaKH.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
 
-            txtMaTaiKhoan.DataBindings.Clear();
-            txtMaTaiKhoan.DataBindings.Add("Text", dataGridView1.DataSource, "MaTK");
+            //txtMaTaiKhoan.DataBindings.Clear();
+            //txtMaTaiKhoan.DataBindings.Add("Text", dataGridView1.DataSource, "MaTK");
 
         }
 
@@ -289,7 +289,7 @@ namespace QuanLyDatSanBongDaMini
 
             // Tạo đối tượng SqlCommand
             //SqlCommand command = new SqlCommand("INSERT INTO HoaDon (SoLuongDichVu, MaDatSan, MaDichVu, TongThanhTien) VALUES (@SoLuongDichVu, @MaDatSan, @MaDichVu, @TongThanhTien); SELECT SCOPE_IDENTITY();", connection);
-            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaDatSan,MaTK,MaKH) VALUES (@TongThanhTien, @MaDatSan,@MaTK,@MaKH); SELECT SCOPE_IDENTITY();", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaDatSan, MaDV) VALUES (@TongThanhTien, @MaDatSan,@MaDV); SELECT SCOPE_IDENTITY();", connection);
 
             // Lấy giá trị từ các textbox
             //int soLuongDichVu = Convert.ToInt32(textBox3.Text);
@@ -297,9 +297,9 @@ namespace QuanLyDatSanBongDaMini
             //string maDichVu = textBox5.Text;
             double tongTien = Convert.ToDouble(textBox2.Text);
             double maDatSan = Convert.ToDouble(txtmaDatSan.Text);
-            //double maHDDV = Convert.ToDouble(txtmaDichVu.Text);
-            double maTK = Convert.ToDouble(txtMaTaiKhoan.Text);
-            double maKH = Convert.ToDouble(txtMaKH.Text);
+            double maDV = Convert.ToDouble(txtmaDichVu.Text);
+            //double maTK = Convert.ToDouble(txtMaTaiKhoan.Text);
+            //double maKH = Convert.ToDouble(txtMaKH.Text);
 
             // Gán giá trị cho các biến trong đối tượng SqlCommand
             //command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
@@ -307,9 +307,9 @@ namespace QuanLyDatSanBongDaMini
             //command.Parameters.AddWithValue("@MaDichVu", maDichVu);
             command.Parameters.AddWithValue("@TongThanhTien", tongTien);
             command.Parameters.AddWithValue("@MaDatSan", maDatSan);
-            //command.Parameters.AddWithValue("@maHDDV", maHDDV);
-            command.Parameters.AddWithValue("@maTK", maTK);
-            command.Parameters.AddWithValue("@maKH", maKH);
+            command.Parameters.AddWithValue("@maDV", maDV);
+            //command.Parameters.AddWithValue("@maTK", maTK);
+            //command.Parameters.AddWithValue("@maKH", maKH);
 
             //// Mở kết nối CSDL
             //connection.Open();
