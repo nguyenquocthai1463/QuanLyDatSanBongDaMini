@@ -78,6 +78,9 @@ namespace QuanLyDatSanBongDaMini
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            txtmaHoaDon.Enabled = false;
+            textBox6.Enabled = false;
+            textBox7.Enabled = false;
             connection = new SqlConnection(str);
             connection.Open();
             loaddata();
@@ -92,15 +95,20 @@ namespace QuanLyDatSanBongDaMini
 
         public void bingding()
         {
-            textBox1.DataBindings.Clear();
-            textBox1.DataBindings.Add("Text", dataGridView1.DataSource, "MaHoaDon");
+            txtmaHoaDon.DataBindings.Clear();
+            txtmaHoaDon.DataBindings.Add("Text", dataGridView1.DataSource, "MaHoaDon");
 
             textBox2.DataBindings.Clear();
             textBox2.DataBindings.Add("Text", dataGridView1.DataSource, "TongThanhTien");
 
-            textBox3.DataBindings.Clear();
-            textBox3.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
+            txtmaDatSan.DataBindings.Clear();
+            txtmaDatSan.DataBindings.Add("Text", dataGridView1.DataSource, "MaDatSan");
 
+            txtMaKH.DataBindings.Clear();
+            txtMaKH.DataBindings.Add("Text", dataGridView1.DataSource, "MaKH");
+
+            txtMaTaiKhoan.DataBindings.Clear();
+            txtMaTaiKhoan.DataBindings.Add("Text", dataGridView1.DataSource, "MaTK");
 
         }
 
@@ -108,16 +116,16 @@ namespace QuanLyDatSanBongDaMini
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            command = new SqlCommand("SELECT SUM(TongTien) FROM DichVu WHERE MaKH = @MaKhachHang", connection);
+            command = new SqlCommand("SELECT TongTien FROM DichVu WHERE MaDV = @MaDV", connection);
 
             // Lấy mã dịch vụ
-            string maKhachHang = textBox3.Text;
+            string maDV = txtmaDichVu.Text;
 
             //// Lấy số lượng dịch vụ
             //int soLuongDichVu = Convert.ToInt32(textBox3.Text);
 
             // Gán mã dịch vụ và số lượng dịch vụ cho các biến tương ứng trong đối tượng SqlCommand
-            command.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
+            command.Parameters.AddWithValue("@MaDV", maDV);
 
             // Thực thi truy vấn SELECT
             SqlDataReader reader = command.ExecuteReader();
@@ -135,10 +143,12 @@ namespace QuanLyDatSanBongDaMini
                 //textBox6.Text = tienDichVu.ToString();
                 textBox6.Text = giaTienDichVu.ToString();
 
+
+
             }
             else
             {
-                MessageBox.Show("Mã khách hàng không hợp lệ");
+                MessageBox.Show("Mã dịch vụ không hợp lệ");
             }
             reader.Close();
 
@@ -172,13 +182,13 @@ namespace QuanLyDatSanBongDaMini
             //textBox2.Text = tongTien.ToString();
 
 
-            command = new SqlCommand("SELECT SUM(ThanhTien) FROM DatSan WHERE MaKH = @MaKhachHang", connection);
+            command = new SqlCommand("SELECT ThanhTien FROM DatSan WHERE MaDatSan = @MaDatSan", connection);
 
             // Lấy mã đặt sân
-            //string maDatSan = textBox4.Text;
+            string maDatSan = txtmaDatSan.Text;
 
             // Gán mã đặt sân cho tham số trong truy vấn
-            command.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
+            command.Parameters.AddWithValue("@MaDatSan", maDatSan);
 
             // Thực thi truy vấn SELECT
             SqlDataReader reader1 = command.ExecuteReader();
@@ -192,7 +202,7 @@ namespace QuanLyDatSanBongDaMini
             }
             else
             {
-                MessageBox.Show("Mã khách hàng không hợp lệ!");
+                MessageBox.Show("Mã đặt sân không hợp lệ!");
             }
             reader1.Close();
 
@@ -279,21 +289,27 @@ namespace QuanLyDatSanBongDaMini
 
             // Tạo đối tượng SqlCommand
             //SqlCommand command = new SqlCommand("INSERT INTO HoaDon (SoLuongDichVu, MaDatSan, MaDichVu, TongThanhTien) VALUES (@SoLuongDichVu, @MaDatSan, @MaDichVu, @TongThanhTien); SELECT SCOPE_IDENTITY();", connection);
-            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaKH) VALUES (@TongThanhTien, @MaKhachHang); SELECT SCOPE_IDENTITY();", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO HoaDon ( TongThanhTien, MaDatSan,MaTK,MaKH) VALUES (@TongThanhTien, @MaDatSan,@MaTK,@MaKH); SELECT SCOPE_IDENTITY();", connection);
 
             // Lấy giá trị từ các textbox
             //int soLuongDichVu = Convert.ToInt32(textBox3.Text);
             //string maDatSan = textBox4.Text;
             //string maDichVu = textBox5.Text;
             double tongTien = Convert.ToDouble(textBox2.Text);
-            double maKhachHang = Convert.ToDouble(textBox3.Text);
+            double maDatSan = Convert.ToDouble(txtmaDatSan.Text);
+            //double maHDDV = Convert.ToDouble(txtmaDichVu.Text);
+            double maTK = Convert.ToDouble(txtMaTaiKhoan.Text);
+            double maKH = Convert.ToDouble(txtMaKH.Text);
 
             // Gán giá trị cho các biến trong đối tượng SqlCommand
             //command.Parameters.AddWithValue("@SoLuongDichVu", soLuongDichVu);
             //command.Parameters.AddWithValue("@MaDatSan", maDatSan);
             //command.Parameters.AddWithValue("@MaDichVu", maDichVu);
             command.Parameters.AddWithValue("@TongThanhTien", tongTien);
-            command.Parameters.AddWithValue("@MaKhachHang", maKhachHang);
+            command.Parameters.AddWithValue("@MaDatSan", maDatSan);
+            //command.Parameters.AddWithValue("@maHDDV", maHDDV);
+            command.Parameters.AddWithValue("@maTK", maTK);
+            command.Parameters.AddWithValue("@maKH", maKH);
 
             //// Mở kết nối CSDL
             //connection.Open();
@@ -336,9 +352,9 @@ namespace QuanLyDatSanBongDaMini
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            txtmaHoaDon.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";
+            txtmaDatSan.Text = "";
             //textBox4.Text = "";
             //textBox5.Text = "";
             textBox6.Text = "";

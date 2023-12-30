@@ -86,11 +86,7 @@ namespace QuanLyDatSanBongDaMini
 
         }
 
-        private void dgv_QuanLyNhanVien_SelectionChanged(object sender, EventArgs e)
-        {
-
-
-        }
+       
         private void FillChucVuComboBox()
         {
             string connectionString = @"Data Source=ANHTU;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
@@ -227,6 +223,48 @@ namespace QuanLyDatSanBongDaMini
 
             txt_MaTaiKhoan.Enabled = false;
         }
-        
+
+        private void btn_ChiTiet_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=ANHTU;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
+            // Đảm bảo rằng đã chọn một tài khoản trong DataGridView trước khi nhấn nút "Chi Tiết"
+            if (dgv_QuanLyNhanVien.SelectedRows.Count > 0)
+            {
+                // Lấy mã tài khoản từ cột cần hiển thị (ví dụ: cột "MaTK" có tên là "MaTK")
+                string maTaiKhoan = dgv_QuanLyNhanVien.SelectedRows[0].Cells["MaTK"].Value.ToString();
+
+                // Thực hiện truy vấn để lấy thông tin chi tiết tài khoản từ cơ sở dữ liệu dựa trên mã tài khoản
+                string query = "SELECT HoVaTen, CanCuocCongDan, SoDienThoai FROM ThongTinTaiKhoan WHERE MaTK = @MaTK";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaTK", maTaiKhoan);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string hoTen = reader["HoVaTen"].ToString();
+                            string canCuocCongDan = reader["CanCuocCongDan"].ToString();
+                            string soDienThoai = reader["SoDienThoai"].ToString();
+
+                            // Hiển thị thông tin chi tiết tài khoản trên form mới
+                            ChiTietTaiKhoan chiTietForm = new ChiTietTaiKhoan(hoTen, canCuocCongDan, soDienThoai);
+                            chiTietForm.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin chi tiết cho tài khoản này.");
+                    }
+                    reader.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản trước khi xem chi tiết.");
+            }
+        }
     }
 }

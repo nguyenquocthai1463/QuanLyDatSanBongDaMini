@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_LamMoi = new System.Windows.Forms.Button();
+            this.btn_ChiTiet = new System.Windows.Forms.Button();
             this.btn_Luu = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
             this.btn_Xoa = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.dgv_QuanLyNhanVien = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox_ChucVu = new System.Windows.Forms.ComboBox();
             this.txt_MatKhau = new System.Windows.Forms.TextBox();
             this.txt_TenTaiKhoan = new System.Windows.Forms.TextBox();
             this.txt_MaTaiKhoan = new System.Windows.Forms.TextBox();
@@ -48,8 +50,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox_ChucVu = new System.Windows.Forms.ComboBox();
-            this.btn_LamMoi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,7 +60,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btn_LamMoi);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_ChiTiet);
             this.panel1.Controls.Add(this.btn_Luu);
             this.panel1.Controls.Add(this.btn_Sua);
             this.panel1.Controls.Add(this.btn_Xoa);
@@ -70,14 +70,25 @@
             this.panel1.Size = new System.Drawing.Size(705, 77);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // btn_LamMoi
             // 
-            this.button1.Location = new System.Drawing.Point(471, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 50);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Chi tiết";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_LamMoi.Location = new System.Drawing.Point(588, 14);
+            this.btn_LamMoi.Name = "btn_LamMoi";
+            this.btn_LamMoi.Size = new System.Drawing.Size(111, 50);
+            this.btn_LamMoi.TabIndex = 6;
+            this.btn_LamMoi.Text = "Làm mới";
+            this.btn_LamMoi.UseVisualStyleBackColor = true;
+            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
+            // 
+            // btn_ChiTiet
+            // 
+            this.btn_ChiTiet.Location = new System.Drawing.Point(471, 14);
+            this.btn_ChiTiet.Name = "btn_ChiTiet";
+            this.btn_ChiTiet.Size = new System.Drawing.Size(111, 50);
+            this.btn_ChiTiet.TabIndex = 5;
+            this.btn_ChiTiet.Text = "Chi tiết";
+            this.btn_ChiTiet.UseVisualStyleBackColor = true;
+            this.btn_ChiTiet.Click += new System.EventHandler(this.btn_ChiTiet_Click);
             // 
             // btn_Luu
             // 
@@ -156,7 +167,6 @@
             this.dgv_QuanLyNhanVien.Size = new System.Drawing.Size(606, 462);
             this.dgv_QuanLyNhanVien.TabIndex = 3;
             this.dgv_QuanLyNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_QuanLyNhanVien_CellContentClick);
-            this.dgv_QuanLyNhanVien.SelectionChanged += new System.EventHandler(this.dgv_QuanLyNhanVien_SelectionChanged);
             // 
             // label1
             // 
@@ -183,6 +193,14 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(369, 520);
             this.panel4.TabIndex = 1;
+            // 
+            // comboBox_ChucVu
+            // 
+            this.comboBox_ChucVu.FormattingEnabled = true;
+            this.comboBox_ChucVu.Location = new System.Drawing.Point(137, 182);
+            this.comboBox_ChucVu.Name = "comboBox_ChucVu";
+            this.comboBox_ChucVu.Size = new System.Drawing.Size(163, 24);
+            this.comboBox_ChucVu.TabIndex = 17;
             // 
             // txt_MatKhau
             // 
@@ -255,24 +273,6 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Mã TK:";
             // 
-            // comboBox_ChucVu
-            // 
-            this.comboBox_ChucVu.FormattingEnabled = true;
-            this.comboBox_ChucVu.Location = new System.Drawing.Point(137, 182);
-            this.comboBox_ChucVu.Name = "comboBox_ChucVu";
-            this.comboBox_ChucVu.Size = new System.Drawing.Size(163, 24);
-            this.comboBox_ChucVu.TabIndex = 17;
-            // 
-            // btn_LamMoi
-            // 
-            this.btn_LamMoi.Location = new System.Drawing.Point(588, 14);
-            this.btn_LamMoi.Name = "btn_LamMoi";
-            this.btn_LamMoi.Size = new System.Drawing.Size(111, 50);
-            this.btn_LamMoi.TabIndex = 6;
-            this.btn_LamMoi.Text = "Làm mới";
-            this.btn_LamMoi.UseVisualStyleBackColor = true;
-            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
-            // 
             // QuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -300,7 +300,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_ChiTiet;
         private System.Windows.Forms.Button btn_Luu;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;

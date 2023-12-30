@@ -16,6 +16,12 @@ namespace QuanLyDatSanBongDaMini
         public QuanLyDichVu()
         {
             InitializeComponent();
+            this.cbodv.SelectedIndexChanged += new System.EventHandler(this.cbodv_SelectedIndexChanged);
+            
+
+            txtTonkho.ReadOnly = true;
+            txtMadv.ReadOnly = true;
+            txtThanhTien.ReadOnly = true;
         }
         SqlConnection connection;
         SqlCommand command;
@@ -27,6 +33,7 @@ namespace QuanLyDatSanBongDaMini
         {
             command = connection.CreateCommand();
             command.CommandText = "select * from DichVu";
+
             adapter.SelectCommand = command;
             table.Clear();
             adapter.Fill(table);
@@ -43,6 +50,9 @@ namespace QuanLyDatSanBongDaMini
 
             // Tính toán và hiển thị tổng tiền
             CalculateAndDisplayTotalPrice();
+
+            //dơn giá
+            dataGridView1.Columns["DonGia"].ReadOnly = true;
         }
 
         private void RemoveTongTienColumn()
@@ -63,9 +73,9 @@ namespace QuanLyDatSanBongDaMini
             i = dataGridView1.CurrentRow.Index;
             txtMadv.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
             cbodv.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            txtsoluong.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            txtDongia.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            txtKhachhang.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            txtsoluong.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            txtDongia.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+
             CalculateAndDisplayTotalPrice();
         }
 
@@ -87,7 +97,7 @@ namespace QuanLyDatSanBongDaMini
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells["Soluong"].Value != null && int.TryParse(row.Cells["Soluong"].Value.ToString(), out int soLuong) &&
+                    if (row.Cells["SLMua"].Value != null && int.TryParse(row.Cells["SLMua"].Value.ToString(), out int soLuong) &&
                         row.Cells["DonGia"].Value != null && double.TryParse(row.Cells["DonGia"].Value.ToString(), out double donGia))
                     {
                         double tongTien = soLuong * donGia;
@@ -106,65 +116,93 @@ namespace QuanLyDatSanBongDaMini
             }
         }
 
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
+                string tenDichVu = cbodv.Text;
+                int soLuongThem = int.Parse(txtsoluong.Text);
+                double donGia = double.Parse(txtDongia.Text);
+                int maKH; // Biến cho Mã Khách Hàng
+                if (!int.TryParse(txtMaKH.Text, out maKH)) // Sử dụng TryParse để kiểm tra xem có phải là số hợp lệ hay không
+                {
+                    MessageBox.Show("Mã khách hàng không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Dừng thực thi nếu mã khách hàng không hợp lệ
+                }
+
+                // Tính toán tổng tiền cho dịch vụ mới
+                double tongTien = soLuongThem * donGia;
+
+                // Kiểm tra số lượng tồn kho hiện có từ cơ sở dữ liệu
                 command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO DichVu (TenDichVu, Soluong, DonGia, Tongtien, MaKH) VALUES (@TenDichVu, @Soluong, @DonGia, @Tongtien, @MaKH)";
-                command.Parameters.AddWithValue("@TenDichVu", cbodv.Text);
-                command.Parameters.AddWithValue("@Soluong", int.Parse(txtsoluong.Text));
-                command.Parameters.AddWithValue("@DonGia", double.Parse(txtDongia.Text));
+                command.CommandText = "SELECT SoLuongTonKho FROM DichVu WHERE TenDichVu = @TenDichVu";
+                command.Parameters.AddWithValue("@TenDichVu", tenDichVu);
+                object result = command.ExecuteScalar();
 
-                // Tính toán tổng tiền và thêm vào tham số
-                double tongTien = int.Parse(txtsoluong.Text) * double.Parse(txtDongia.Text);
-                command.Parameters.AddWithValue("@Tongtien", tongTien);
+                if (result != null)
+                {
+                    int soLuongTonKho = Convert.ToInt32(result);
 
-                command.Parameters.AddWithValue("@MaKH", int.Parse(txtKhachhang.Text));
+                    // Kiểm tra xem số lượng tồn kho có đủ không
+                    if (soLuongTonKho >= soLuongThem)
+                    {
+                        // Cập nhật số lượng tồn kho mới
+                        int soLuongTonKhoMoi = soLuongTonKho - soLuongThem;
+                        command.CommandText = "UPDATE DichVu SET SoLuongTonKho = @SoLuongTonKhoMoi WHERE TenDichVu = @TenDichVu";
+                        command.Parameters.AddWithValue("@SoLuongTonKhoMoi", soLuongTonKhoMoi);
+                        command.ExecuteNonQuery();
 
-                command.ExecuteNonQuery();
+                        // Thêm dịch vụ mới vào cơ sở dữ liệu
+                        command.CommandText = "INSERT INTO DichVu (TenDichVu, SLMua, DonGia, Tongtien, SoLuongTonKho, MaKH) VALUES (@TenDichVu, @SLMua, @DonGia, @Tongtien, @SoLuongTonKhoMoi, @MaKH)";
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@TenDichVu", tenDichVu);
+                        command.Parameters.AddWithValue("@SLMua", soLuongThem);
+                        command.Parameters.AddWithValue("@DonGia", donGia);
+                        command.Parameters.AddWithValue("@Tongtien", tongTien);
+                        command.Parameters.AddWithValue("@SoLuongTonKhoMoi", soLuongTonKhoMoi);
+                        command.Parameters.AddWithValue("@MaKH", maKH);
+                        command.ExecuteNonQuery();
 
-                // Cập nhật DataGridView và tính toán tổng tiền
-                loaddata();
-
-                // Làm mới các ô nhập liệu
-                cbodv.SelectedIndex = -1; // hoặc cbodv.Text = ""; nếu bạn không sử dụng ComboBox
-                txtsoluong.Text = "";
-                txtDongia.Text = "";
-                txtKhachhang.Text = "";
-                // Nếu bạn có ô mã dịch vụ và muốn thiết lập lại nó cũng
-                txtMadv.Text = "";
-
-                MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Hiển thị thông báo thành công
+                        MessageBox.Show("Thêm dịch vụ thành công và số lượng tồn kho đã được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không đủ số lượng tồn kho để thêm dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy dịch vụ trong cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Lỗi định dạng dữ liệu nhập vào: " + fe.Message, "Lỗi Định Dạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Đã xảy ra lỗi khi thêm dịch vụ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Làm mới các trường nhập liệu
+                txtMadv.Clear();
+                txtMaKH.Clear(); // Làm mới trường Mã Khách Hàng
+                cbodv.SelectedIndex = -1;
+                txtsoluong.Clear();
+                txtDongia.Clear();
+                txtTonkho.Clear();
+
+                // Tải lại dữ liệu để cập nhật DataGridView
+                loaddata();
             }
         }
 
 
-        //private void btnXoa_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        int i;
-        //        i = dataGridView1.CurrentRow.Index;
 
-        //        command = connection.CreateCommand();
-        //        command.CommandText = "DELETE FROM DichVu WHERE MaDV=@MaDV";
-        //        command.Parameters.AddWithValue("@MaDV", txtMadv.Text);
 
-        //        command.ExecuteNonQuery();
 
-        //        loaddata();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
@@ -194,7 +232,7 @@ namespace QuanLyDatSanBongDaMini
                         cbodv.SelectedIndex = -1; // hoặc cbodv.Text = "" nếu đây là TextBox
                         txtsoluong.Text = "";
                         txtDongia.Text = "";
-                        txtKhachhang.Text = "";
+
 
                         MessageBox.Show("Dịch vụ đã được xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -206,94 +244,93 @@ namespace QuanLyDatSanBongDaMini
             }
         }
 
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             try
             {
                 int i = dataGridView1.CurrentRow.Index;
 
-                // Ẩn các TextBox và Label không cần thiết
-                cbodv.Visible = false;
-                txtDongia.Visible = false;
-                txtKhachhang.Visible = false;
+                txtMadv.Text = dataGridView1.Rows[i].Cells["MaDV"].Value.ToString();
+                cbodv.Text = dataGridView1.Rows[i].Cells["TenDichVu"].Value.ToString();
+                txtsoluong.Text = dataGridView1.Rows[i].Cells["SLMua"].Value.ToString();
+                txtDongia.Text = dataGridView1.Rows[i].Cells["DonGia"].Value.ToString();
+                txtTonkho.Text = dataGridView1.Rows[i].Cells["SoLuongTonKho"].Value.ToString();
+                txtMaKH.Text = dataGridView1.Rows[i].Cells["MaKH"].Value.ToString();
 
-                // Hiển thị TextBox số lượng để chỉnh sửa
-                txtsoluong.Visible = true;
+                // Set txtDongia to ReadOnly to prevent editing
+                txtDongia.ReadOnly = true;
+                txtsoluong.ReadOnly = false;
+                txtMaKH.ReadOnly = true; // Nếu bạn cũng không muốn cho phép sửa mã khách hàng
 
-                // Hiển thị nút Lưu
-                btnLuu.Visible = true;
-
-                // Ẩn nút Sửa
-                btnSua.Visible = true;
-
-                // Hiển thị dữ liệu cần sửa
-                txtMadv.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                cbodv.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                txtsoluong.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                // Giữ giá trị đơn giá không thay đổi
-                txtDongia.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                txtKhachhang.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                btnLuu.Enabled = true;
+                btnSua.Enabled = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Đã xảy ra lỗi khi chuẩn bị sửa dịch vụ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 int maDV = Convert.ToInt32(txtMadv.Text);
+                int newQuantity = Convert.ToInt32(txtsoluong.Text);
+                int oldQuantity = Convert.ToInt32(dataGridView1.CurrentRow.Cells["SLMua"].Value);
+                int currentStock = Convert.ToInt32(txtTonkho.Text);
 
-                // Kiểm tra nếu TextBox số lượng đang hiển thị, cập nhật số lượng
-                if (txtsoluong.Visible)
+           
+                int newStockQuantity = currentStock - (newQuantity - oldQuantity);
+
+               
+                if (newStockQuantity >= 0)
                 {
-                    int soLuong = Convert.ToInt32(txtsoluong.Text);
+                    
                     command = connection.CreateCommand();
-                    command.CommandText = "UPDATE DichVu SET Soluong=@Soluong WHERE MaDV=@MaDV";
+                    command.CommandText = "UPDATE DichVu SET SLMua=@SLMua, SoLuongTonKho=@SoLuongTonKho WHERE MaDV=@MaDV";
                     command.Parameters.AddWithValue("@MaDV", maDV);
-                    command.Parameters.AddWithValue("@Soluong", soLuong);
+                    command.Parameters.AddWithValue("@SLMua", newQuantity);
+                    command.Parameters.AddWithValue("@SoLuongTonKho", newStockQuantity);
+
+                    
                     command.ExecuteNonQuery();
+
+                    
+                    MessageBox.Show("Đã cập nhật thông tin và số lượng tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    loaddata();
+
+                    btnSua.Enabled = true;
+                    btnLuu.Enabled = false;
+
+                    
+                    txtMadv.Clear();
+                    txtsoluong.Clear();
+                    txtDongia.Clear();
+                    txtTonkho.Clear();
+                    cbodv.SelectedIndex = -1;
                 }
-
-                MessageBox.Show("Đã cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Làm mới các ô
-                txtMadv.Text = "";
-                cbodv.Text = "";
-                txtsoluong.Text = "";
-                txtDongia.Text = "";
-                txtKhachhang.Text = "";
-
-                // Tải lại dữ liệu để cập nhật DataGridView
-                loaddata();
-
-                // Hiển thị lại tất cả các TextBox và Label
-                cbodv.Visible = true;
-                txtDongia.Visible = true;
-                txtKhachhang.Visible = true;
-
-                // Hiển thị lại nút Sửa
-                btnSua.Visible = true;
-
-                // Hiển thị lại nút Lưu
-                btnLuu.Visible = true;
-
-                // Hiển thị lại tất cả các nút Thêm, Xóa
-                btnThem.Enabled = true;
-                btnXoa.Enabled = true;
-                btnSua.Enabled = true;
-
-                // Tính toán và hiển thị tổng tiền
-                CalculateAndDisplayTotalPrice();
+                else
+                {
+                    
+                    MessageBox.Show("Số lượng tồn kho không đủ để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (FormatException fe)
+            {
+                
+                MessageBox.Show("Lỗi định dạng dữ liệu nhập vào: " + fe.Message, "Lỗi Định Dạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                MessageBox.Show("Đã xảy ra lỗi khi cập nhật dịch vụ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -304,5 +341,86 @@ namespace QuanLyDatSanBongDaMini
         {
             CalculateAndDisplayTotalPrice();
         }
+
+        private void txtTonkho_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void cbodv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbodv.SelectedItem != null)
+            {
+                string selectedServiceName = cbodv.SelectedItem.ToString();
+
+                try
+                {
+                    // Truy vấn để lấy số lượng tồn kho
+                    SqlCommand commandStock = new SqlCommand("SELECT SoLuongTonKho FROM DichVu WHERE TenDichVu = @TenDichVu", connection);
+                    commandStock.Parameters.AddWithValue("@TenDichVu", selectedServiceName);
+                    var stockResult = commandStock.ExecuteScalar();
+                    txtTonkho.Text = stockResult != null ? stockResult.ToString() : "0";
+
+                    // Thêm truy vấn để lấy đơn giá dựa trên tên dịch vụ
+                    SqlCommand commandPrice = new SqlCommand("SELECT DonGia FROM DichVu WHERE TenDichVu = @TenDichVu", connection);
+                    commandPrice.Parameters.AddWithValue("@TenDichVu", selectedServiceName);
+                    var priceResult = commandPrice.ExecuteScalar();
+
+                    // Cập nhật TextBox đơn giá với giá trị lấy được, không có phần thập phân
+                    txtDongia.Text = priceResult != null ? Convert.ToDecimal(priceResult).ToString("N0") : "0"; // "N0" định dạng số không có phần thập phân
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving service price and stock quantity: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnCalculateTotal_Click_1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMaKH.Text))
+            {
+                if (int.TryParse(txtMaKH.Text, out int maKH))
+                {
+                    // Ensure the customer ID exists in the KhachHang table before attempting to calculate the total.
+                    SqlCommand commandCheck = new SqlCommand("SELECT COUNT(*) FROM KhachHang WHERE MaKH = @MaKH", connection);
+                    commandCheck.Parameters.AddWithValue("@MaKH", maKH);
+                    int exists = (int)commandCheck.ExecuteScalar();
+
+                    if (exists == 0)
+                    {
+                        MessageBox.Show("Mã khách hàng không tồn tại trong cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Exit if the customer ID doesn't exist
+                    }
+
+                    SqlCommand command = new SqlCommand("SELECT SUM(Tongtien) FROM DichVu WHERE MaKH = @MaKH", connection);
+                    command.Parameters.AddWithValue("@MaKH", maKH);
+
+                    var result = command.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        decimal totalAmount = Convert.ToDecimal(result);
+                        txtThanhTien.Text = totalAmount.ToString("N0") + " VND";
+                    }
+                    else
+                    {
+                        txtThanhTien.Text = "0 VND";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã khách hàng không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập mã khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+       
+
+
     }
 }
