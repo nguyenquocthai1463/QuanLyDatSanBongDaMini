@@ -61,5 +61,12 @@ namespace QuanLyDatSanBongDaMini
             QuanLyKhachHang f = new QuanLyKhachHang();
             f.ShowDialog();
         }
+
+        private void btn_DangXuat_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // Ẩn form hiện tại
+            DangNhap dangnhap = new DangNhap();
+            dangnhap.Show(); // Mở form đăng nhập
+        }
     }
 }
