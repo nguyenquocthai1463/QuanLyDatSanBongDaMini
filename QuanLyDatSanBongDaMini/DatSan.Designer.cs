@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bt_search = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_search = new System.Windows.Forms.TextBox();
             this.bt_xoa = new System.Windows.Forms.Button();
             this.bt_sua = new System.Windows.Forms.Button();
             this.bt_lammoi = new System.Windows.Forms.Button();
@@ -59,18 +67,16 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_search = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.bt_search = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.giodat)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.giodat)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -87,9 +93,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 20);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Thông tin đặt sân";
+            this.label2.Text = "Đặt sân";
             // 
             // panel2
             // 
@@ -120,6 +126,70 @@
             this.panel2.Size = new System.Drawing.Size(1081, 311);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(803, 190);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 50);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Tìm kiếm";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(454, 119);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(328, 179);
+            this.flowLayoutPanel1.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(155, 20);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Tìm kiếm lịch đặt sân";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.bt_search);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.tb_search);
+            this.panel1.Location = new System.Drawing.Point(3, 23);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(325, 156);
+            this.panel1.TabIndex = 21;
+            // 
+            // bt_search
+            // 
+            this.bt_search.Location = new System.Drawing.Point(78, 70);
+            this.bt_search.Name = "bt_search";
+            this.bt_search.Size = new System.Drawing.Size(171, 39);
+            this.bt_search.TabIndex = 23;
+            this.bt_search.Text = "Tìm";
+            this.bt_search.UseVisualStyleBackColor = true;
+            this.bt_search.Click += new System.EventHandler(this.bt_search_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 20);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Mã đặt sân";
+            // 
+            // tb_search
+            // 
+            this.tb_search.Location = new System.Drawing.Point(111, 22);
+            this.tb_search.Name = "tb_search";
+            this.tb_search.Size = new System.Drawing.Size(198, 26);
+            this.tb_search.TabIndex = 21;
             // 
             // bt_xoa
             // 
@@ -208,6 +278,7 @@
             this.cb_san.Size = new System.Drawing.Size(290, 28);
             this.cb_san.TabIndex = 12;
             this.cb_san.SelectedIndexChanged += new System.EventHandler(this.cb_san_SelectedIndexChanged);
+            this.cb_san.TextChanged += new System.EventHandler(this.cb_san_TextChanged);
             // 
             // cb_kh
             // 
@@ -217,6 +288,7 @@
             this.cb_kh.Size = new System.Drawing.Size(290, 28);
             this.cb_kh.TabIndex = 11;
             this.cb_kh.SelectedIndexChanged += new System.EventHandler(this.cb_kh_SelectedIndexChanged);
+            this.cb_kh.TextChanged += new System.EventHandler(this.cb_kh_TextChanged);
             // 
             // tb_tiensan
             // 
@@ -322,9 +394,9 @@
             this.columnHeader6,
             this.columnHeader7});
             this.lv_datsan.HideSelection = false;
-            this.lv_datsan.Location = new System.Drawing.Point(11, 352);
+            this.lv_datsan.Location = new System.Drawing.Point(3, 23);
             this.lv_datsan.Name = "lv_datsan";
-            this.lv_datsan.Size = new System.Drawing.Size(1085, 401);
+            this.lv_datsan.Size = new System.Drawing.Size(1081, 401);
             this.lv_datsan.TabIndex = 2;
             this.lv_datsan.UseCompatibleStateImageBehavior = false;
             this.lv_datsan.View = System.Windows.Forms.View.Details;
@@ -365,76 +437,34 @@
             this.columnHeader7.Text = "Tiền sân";
             this.columnHeader7.Width = 120;
             // 
-            // label1
+            // flowLayoutPanel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 20);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Tìm kiếm lịch đặt sân";
+            this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.Controls.Add(this.lv_datsan);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(12, 352);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1085, 426);
+            this.flowLayoutPanel3.TabIndex = 3;
             // 
-            // tb_search
+            // label4
             // 
-            this.tb_search.Location = new System.Drawing.Point(111, 22);
-            this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(198, 26);
-            this.tb_search.TabIndex = 21;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(203, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Thông tin tất cả lịch đặt sân";
             // 
-            // flowLayoutPanel1
+            // errorProvider1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(454, 119);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(328, 179);
-            this.flowLayoutPanel1.TabIndex = 22;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.bt_search);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.tb_search);
-            this.panel1.Location = new System.Drawing.Point(3, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(325, 156);
-            this.panel1.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Mã đặt sân";
-            // 
-            // bt_search
-            // 
-            this.bt_search.Location = new System.Drawing.Point(78, 70);
-            this.bt_search.Name = "bt_search";
-            this.bt_search.Size = new System.Drawing.Size(171, 39);
-            this.bt_search.TabIndex = 23;
-            this.bt_search.Text = "Tìm";
-            this.bt_search.UseVisualStyleBackColor = true;
-            this.bt_search.Click += new System.EventHandler(this.bt_search_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(803, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 50);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Tìm lịch";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.errorProvider1.ContainerControl = this;
             // 
             // DatSan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 924);
-            this.Controls.Add(this.lv_datsan);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "DatSan";
             this.Text = "DatSan";
@@ -443,11 +473,14 @@
             this.flowLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.giodat)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.giodat)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -491,5 +524,8 @@
         private System.Windows.Forms.Button bt_search;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_search;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
