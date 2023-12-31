@@ -25,7 +25,7 @@ namespace QuanLyDatSanBongDaMini
         }
         SqlConnection connection;
         SqlCommand command;
-        string str = @"Data Source=DESKTOP-F8192VD\QUOCTHAI;Initial Catalog = QL_DatSanBongDa; Integrated Security = True";
+        string conStr = "Data Source=MSI\\MSSQLSERVER01;Database=QL_DatSanBongDa;Integrated Security=true";
         SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable table = new DataTable();
 
@@ -81,7 +81,7 @@ namespace QuanLyDatSanBongDaMini
 
         private void QuanLyDichVu_Load(object sender, EventArgs e)
         {
-            connection = new SqlConnection(str);
+            connection = new SqlConnection(conStr);
             connection.Open();
             loaddata();
 

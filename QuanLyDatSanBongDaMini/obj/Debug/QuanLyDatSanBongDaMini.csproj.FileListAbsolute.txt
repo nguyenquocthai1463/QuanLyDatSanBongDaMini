@@ -77,3 +77,5 @@ D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBo
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
+C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
