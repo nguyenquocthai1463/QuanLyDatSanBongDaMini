@@ -98,18 +98,32 @@ namespace QuanLyDatSanBongDaMini
             // 
             // txtThanhTien
             // 
+<<<<<<< HEAD
             this.txtThanhTien.Location = new System.Drawing.Point(276, 222);
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(4);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(104, 22);
+=======
+            this.txtThanhTien.Location = new System.Drawing.Point(311, 277);
+            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Size = new System.Drawing.Size(117, 26);
+>>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
             this.txtThanhTien.TabIndex = 43;
             // 
             // btnCalculateTotal
             // 
+<<<<<<< HEAD
             this.btnCalculateTotal.Location = new System.Drawing.Point(403, 215);
             this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalculateTotal.Name = "btnCalculateTotal";
             this.btnCalculateTotal.Size = new System.Drawing.Size(90, 34);
+=======
+            this.btnCalculateTotal.Location = new System.Drawing.Point(453, 269);
+            this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCalculateTotal.Name = "btnCalculateTotal";
+            this.btnCalculateTotal.Size = new System.Drawing.Size(101, 43);
+>>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
             this.btnCalculateTotal.TabIndex = 42;
             this.btnCalculateTotal.Text = "Tổng";
             this.btnCalculateTotal.UseVisualStyleBackColor = true;
@@ -150,9 +164,13 @@ namespace QuanLyDatSanBongDaMini
             this.label5.Location = new System.Drawing.Point(8, 189);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
+<<<<<<< HEAD
             this.label5.Size = new System.Drawing.Size(148, 20);
+=======
+            this.label5.Size = new System.Drawing.Size(132, 25);
+>>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
             this.label5.TabIndex = 38;
-            this.label5.Text = "Số lượng trong kho";
+            this.label5.Text = "Số lượng  kho";
             // 
             // btnThoat
             // 

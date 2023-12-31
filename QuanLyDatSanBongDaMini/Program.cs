@@ -16,9 +16,14 @@ namespace QuanLyDatSanBongDaMini
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             //Application.Run(new DangNhap());
             //Application.Run(new DatSan());
             Application.Run(new QuanLyHoaDon());
+=======
+            Application.Run(new DangNhap());
+
+>>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
         }
     }
 }

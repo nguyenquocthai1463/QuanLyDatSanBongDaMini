@@ -100,9 +100,9 @@ namespace QuanLyDatSanBongDaMini
             cb_san.SelectedIndex = 0;
             cb_kh.SelectedIndex = 0;
             nhansan.ResetText();
-            trasan.ResetText();
             giodat.Value = 0;
             tb_tiensan.Text = "";
+            bt_xoa.Enabled = bt_sua.Enabled = false;
         }
 
         void TimLichDatSan()
@@ -154,7 +154,7 @@ namespace QuanLyDatSanBongDaMini
             LoadDuLieuKH();
             LoadDuLieuSan();
             HienThiDSDS();
-            tb_masan.Enabled = tb_makh.Enabled = tb_tiensan.Enabled = trasan.Enabled = flowLayoutPanel1.Enabled = false;
+            tb_masan.Enabled = tb_makh.Enabled = tb_tiensan.Enabled = trasan.Enabled = flowLayoutPanel1.Enabled = bt_sua.Enabled = bt_xoa.Enabled = false;
         }
 
         private void cb_kh_SelectedIndexChanged(object sender, EventArgs e)
@@ -187,6 +187,7 @@ namespace QuanLyDatSanBongDaMini
         {
             if (lv_datsan.SelectedIndices.Count > 0)
             {
+                bt_sua.Enabled = bt_xoa.Enabled = true;
                 tb_masan.Text = lv_datsan.SelectedItems[0].SubItems[1].Text;
                 tb_makh.Text = lv_datsan.SelectedItems[0].SubItems[2].Text;
                 nhansan.Text = lv_datsan.SelectedItems[0].SubItems[3].Text;
@@ -203,6 +204,12 @@ namespace QuanLyDatSanBongDaMini
             int masan = Int32.Parse(tb_masan.Text);
             int makh = Int32.Parse(tb_makh.Text);
             int tiensan = Int32.Parse(tb_tiensan.Text);
+            if(nhansan.Value < DateTime.Now.AddHours(2))
+            {
+                MessageBox.Show("Thời gian đặt sân không hợp lệ, vui lòng đặt sân trước thời điểm hiện tại 2h!");
+                nhansan.Focus();
+                return;
+            }
             if (KiemTraLichTrung(nhan, tra, masan) == false)
             {
                 try
@@ -331,6 +338,16 @@ namespace QuanLyDatSanBongDaMini
         {
             flowLayoutPanel1.Enabled = true;
             cb_kh.Enabled = cb_san.Enabled = giodat.Enabled = nhansan.Enabled = trasan.Enabled = tb_tiensan.Enabled = tb_makh.Enabled = tb_masan.Enabled = bt_datsan.Enabled = bt_lammoi.Enabled = bt_sua.Enabled = bt_xoa.Enabled = button2.Enabled = false;
+        }
+
+        private void cb_kh_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cb_san_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -77,6 +77,12 @@ D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBo
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyHoaDon.resources
+=======
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyKhachHang.resources
+>>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
