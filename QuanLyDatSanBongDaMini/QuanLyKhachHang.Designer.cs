@@ -44,17 +44,17 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblCB = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.gbKH = new System.Windows.Forms.GroupBox();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblHoTen = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCCCD = new System.Windows.Forms.TextBox();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gb_LKH.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbKH.SuspendLayout();
@@ -85,6 +85,7 @@
             this.gb_LKH.TabIndex = 44;
             this.gb_LKH.TabStop = false;
             this.gb_LKH.Text = "Danh sách khách hàng";
+            this.gb_LKH.Enter += new System.EventHandler(this.gb_LKH_Enter);
             // 
             // lblKhongTimThay
             // 
@@ -133,7 +134,7 @@
             this.groupBox2.Controls.Add(this.btnSua);
             this.groupBox2.Controls.Add(this.btnXoa);
             this.groupBox2.Controls.Add(this.btnThem);
-            this.groupBox2.Location = new System.Drawing.Point(698, 396);
+            this.groupBox2.Location = new System.Drawing.Point(698, 293);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(589, 86);
             this.groupBox2.TabIndex = 36;
@@ -208,7 +209,7 @@
             this.lsvKH.Location = new System.Drawing.Point(33, 126);
             this.lsvKH.Margin = new System.Windows.Forms.Padding(4);
             this.lsvKH.Name = "lsvKH";
-            this.lsvKH.Size = new System.Drawing.Size(1256, 250);
+            this.lsvKH.Size = new System.Drawing.Size(1256, 148);
             this.lsvKH.TabIndex = 15;
             this.lsvKH.UseCompatibleStateImageBehavior = false;
             this.lsvKH.View = System.Windows.Forms.View.Details;
@@ -228,6 +229,11 @@
             // 
             this.columnHeader8.Text = "Số điện thoại";
             this.columnHeader8.Width = 219;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Căn Cước Công Dân";
+            this.columnHeader1.Width = 288;
             // 
             // lblCB
             // 
@@ -296,6 +302,25 @@
             this.gbKH.Text = "Thông tin khách hàng";
             this.gbKH.Enter += new System.EventHandler(this.gbKH_Enter);
             // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(936, 117);
+            this.txtCCCD.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(353, 27);
+            this.txtCCCD.TabIndex = 41;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(750, 124);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(163, 20);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Căn Cước Công Dân";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
@@ -316,35 +341,11 @@
             this.lblHoTen.TabIndex = 0;
             this.lblHoTen.Text = "Họ tên";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(750, 124);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 20);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Căn Cước Công Dân";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // txtCCCD
-            // 
-            this.txtCCCD.Location = new System.Drawing.Point(936, 117);
-            this.txtCCCD.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(353, 27);
-            this.txtCCCD.TabIndex = 41;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Căn Cước Công Dân";
-            this.columnHeader1.Width = 288;
-            // 
             // QuanLyKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1331, 868);
+            this.ClientSize = new System.Drawing.Size(1331, 797);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gb_LKH);
             this.Controls.Add(this.gbKH);

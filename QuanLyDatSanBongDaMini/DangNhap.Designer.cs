@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 304);
+            this.ClientSize = new System.Drawing.Size(659, 304);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Thoat);
             this.Controls.Add(this.checkBox1);

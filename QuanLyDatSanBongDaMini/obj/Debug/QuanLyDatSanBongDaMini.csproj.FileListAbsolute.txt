@@ -79,3 +79,4 @@ D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBo
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
 C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+C:\Users\tan\Documents\GitHub\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyHoaDon.resources

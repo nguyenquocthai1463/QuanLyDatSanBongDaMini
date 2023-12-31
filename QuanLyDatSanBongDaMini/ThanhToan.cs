@@ -16,7 +16,7 @@ namespace QuanLyDatSanBongDaMini
     {
         SqlConnection connection;
         SqlCommand command;
-        string str = @"Data Source=TRIS72;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
+        string str = @"Data Source=MSI\MSSQLSERVER01;Initial Catalog=QL_DatSanBongDa;Integrated Security=True";
         SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable table = new DataTable();
         DataTable table1 = new DataTable();

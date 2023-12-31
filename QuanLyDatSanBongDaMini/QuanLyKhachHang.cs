@@ -376,5 +376,10 @@ namespace QuanLyDatSanBongDaMini
         {
 
         }
+
+        private void gb_LKH_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
