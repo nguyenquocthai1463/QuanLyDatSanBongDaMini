@@ -77,3 +77,6 @@ D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBo
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.exe
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.pdb
 D:\NMCNPM\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.csproj.AssemblyReference.cache
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.ChiTietTaiKhoan.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyDichVu.resources
+C:\Users\ACER\Documents\Documents\LuuTruHocTap\QuanLyDatSanBongDaMini\QuanLyDatSanBongDaMini\obj\Debug\QuanLyDatSanBongDaMini.QuanLyKhachHang.resources

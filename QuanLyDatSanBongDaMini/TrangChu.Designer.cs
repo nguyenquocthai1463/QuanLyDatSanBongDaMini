@@ -35,8 +35,8 @@
             this.form_quanlyhoadon = new System.Windows.Forms.Button();
             this.form_quanlynhanvien = new System.Windows.Forms.Button();
             this.form_quanlydichvu = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_DangXuat = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,7 @@
             this.form_quanlyhoadon.TabIndex = 3;
             this.form_quanlyhoadon.Text = "QUẢN LÝ HÓA ĐƠN";
             this.form_quanlyhoadon.UseVisualStyleBackColor = true;
+            this.form_quanlyhoadon.Click += new System.EventHandler(this.form_quanlyhoadon_Click);
             // 
             // form_quanlynhanvien
             // 
@@ -119,15 +120,7 @@
             this.form_quanlydichvu.TabIndex = 5;
             this.form_quanlydichvu.Text = "QUẢN LÝ DỊCH VỤ";
             this.form_quanlydichvu.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(992, 636);
-            this.panel1.TabIndex = 1;
+            this.form_quanlydichvu.Click += new System.EventHandler(this.form_quanlydichvu_Click);
             // 
             // btn_DangXuat
             // 
@@ -139,6 +132,15 @@
             this.btn_DangXuat.Text = "ĐĂNG XUẤT";
             this.btn_DangXuat.UseVisualStyleBackColor = true;
             this.btn_DangXuat.Click += new System.EventHandler(this.btn_DangXuat_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(200, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(992, 636);
+            this.panel1.TabIndex = 1;
             // 
             // TrangChu
             // 
