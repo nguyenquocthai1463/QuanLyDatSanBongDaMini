@@ -100,7 +100,6 @@ namespace QuanLyDatSanBongDaMini
             cb_san.SelectedIndex = 0;
             cb_kh.SelectedIndex = 0;
             nhansan.ResetText();
-            trasan.ResetText();
             giodat.Value = 0;
             tb_tiensan.Text = "";
             bt_xoa.Enabled = bt_sua.Enabled = false;
@@ -205,6 +204,12 @@ namespace QuanLyDatSanBongDaMini
             int masan = Int32.Parse(tb_masan.Text);
             int makh = Int32.Parse(tb_makh.Text);
             int tiensan = Int32.Parse(tb_tiensan.Text);
+            if(nhansan.Value < DateTime.Now.AddHours(2))
+            {
+                MessageBox.Show("Thời gian đặt sân không hợp lệ, vui lòng đặt sân trước thời điểm hiện tại 2h!");
+                nhansan.Focus();
+                return;
+            }
             if (KiemTraLichTrung(nhan, tra, masan) == false)
             {
                 try
