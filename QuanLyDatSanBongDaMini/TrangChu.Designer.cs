@@ -134,17 +134,17 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
+
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(992, 636);
-=======
+
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1116, 884);
->>>>>>> 09e15ed8fed09e89ba3e0e46e39261c49ba8f52e
+
             this.panel1.TabIndex = 1;
             // 
             // TrangChu

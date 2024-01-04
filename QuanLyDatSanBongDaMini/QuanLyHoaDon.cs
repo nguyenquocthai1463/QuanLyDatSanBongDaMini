@@ -137,7 +137,27 @@ namespace QuanLyDatSanBongDaMini
                txtTongTienHD.Text = lsv_HD.SelectedItems[0].SubItems[3].Text;
             }
         }
-        private double TinhTongTien(int maHoaDon)
+        private void btnTongTien_Click(object sender, EventArgs e)
+        {
+            int maDatSan;
+            if (!int.TryParse(textMaDS.Text, out maDatSan))
+            {
+                MessageBox.Show("Mã đặt sân không hợp lệ!");
+                return;
+            }
+
+            int maDichVu;
+            if (!int.TryParse(textMaDV.Text, out maDichVu))
+            {
+                MessageBox.Show("Mã dịch vụ không hợp lệ!");
+                return;
+            }
+
+            double tongTien = TinhTongTien(maDatSan, maDichVu);
+            txtTongTienHD.Text = tongTien.ToString("C");
+        }
+
+        private double TinhTongTien(int MaDatSan, int MaDV)
         {
             double tongTien = 0;
 
@@ -147,47 +167,34 @@ namespace QuanLyDatSanBongDaMini
                 {
                     con.Open();
 
-                    string sql = "SELECT TongThanhTien FROM HoaDon WHERE MaHoaDon = @MaHoaDon";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+                    string sql = "SELECT (s.ThanhTien + dv.DonGia) AS TongThanhTien " +
+                                 "FROM HoaDon hd " +
+                                 "JOIN San s ON hd.MaSan = s.MaSan " +
+                                 "JOIN DichVu dv ON hd.MaDV = dv.MaDV " +
+                                 "WHERE hd.MaDatSan = @MaDatSan AND hd.MaDV = @MaDV";
 
-                    object result = cmd.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@MaDatSan", MaDatSan);
+                    cmd.Parameters.AddWithValue("@MaDV", MaDV);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
                     {
-                        tongTien = Convert.ToDouble(result);
+                        object result = reader["TongThanhTien"];
+                        if (result != null && result != DBNull.Value)
+                        {
+                            tongTien = Convert.ToDouble(result);
+                        }
                     }
+                    reader.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tính tổng tiền: " + ex.Message);
+                MessageBox.Show("Lỗi khi tính tổng tiền hóa đơn: " + ex.Message);
             }
 
             return tongTien;
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTongTienHD_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTongtien_Click(object sender, EventArgs e)
-        {
-            int maHoaDon;
-            if (!int.TryParse(txtMahd.Text, out maHoaDon))
-            {
-                MessageBox.Show("Mã hóa đơn không hợp lệ!");
-                return;
-            }
-
-            double tongTien = TinhTongTien(maHoaDon);
-            txtTongTienHD.Text = tongTien.ToString("C");
-
         }
         void TimDichVu()
         {
@@ -323,6 +330,26 @@ namespace QuanLyDatSanBongDaMini
             {
                 this.Close();
             }
+        }
+
+        private void btnTongtien_Click_1(object sender, EventArgs e)
+        {
+            int MaDatSan;
+            if (!int.TryParse(textMaDS.Text, out MaDatSan))
+            {
+                MessageBox.Show("Mã đặt sân không hợp lệ!");
+                return;
+            }
+
+            int MaDV;
+            if (!int.TryParse(textMaDV.Text, out MaDV))
+            {
+                MessageBox.Show("Mã dịch vụ không hợp lệ!");
+                return;
+            }
+
+            double tongTien = TinhTongTien(MaDatSan, MaDV);
+            txtTongTienHD.Text = tongTien.ToString("C");
         }
     }
 }
