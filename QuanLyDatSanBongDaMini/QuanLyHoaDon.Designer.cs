@@ -64,10 +64,10 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.gbNhanVien.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -421,17 +421,6 @@
             this.columnHeader3.Text = "Đơn giá";
             this.columnHeader3.Width = 120;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(550, 19);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(333, 42);
-            this.label9.TabIndex = 46;
-            this.label9.Text = "Quản Lý Hóa Đơn";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
@@ -464,6 +453,17 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(550, 19);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(333, 42);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Quản Lý Hóa Đơn";
+            // 
             // QuanLyHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -476,7 +476,7 @@
             this.Controls.Add(this.gbNhanVien);
             this.Controls.Add(this.label15);
             this.Name = "QuanLyHoaDon";
-            this.Text = "QuanLyHoaDon";
+            this.Text = ". NCX";
             this.Load += new System.EventHandler(this.QuanLyHoaDon_Load);
             this.gbNhanVien.ResumeLayout(false);
             this.gbNhanVien.PerformLayout();
@@ -520,7 +520,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textMaDV;
         private System.Windows.Forms.Label lBlMDV;
         private System.Windows.Forms.TextBox textMaDS;
@@ -531,5 +530,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Label label9;
     }
 }
